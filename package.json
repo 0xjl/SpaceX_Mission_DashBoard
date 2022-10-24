@@ -17,5 +17,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0xjl/SpaceX_Mission_DashBoard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0xjl/SpaceX_Mission_DashBoard/issues"
+  },
+  "homepage": "https://github.com/0xjl/SpaceX_Mission_DashBoard#readme"
 }
