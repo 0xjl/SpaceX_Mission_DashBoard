@@ -18,7 +18,18 @@ const LaunchType = new GraphQLObjectType({
     launch_year: { type: GraphQLString },
     launch_date_local: { type: GraphQLString },
     launch_success: { type: GraphQLBoolean },
+    details: { type: GraphQLString },
     rocket: { type: RocketType },
+    launch_site: { type: LaunchSite },
+  }),
+});
+
+const LaunchSite = new GraphQLObjectType({
+  name: 'Site',
+  fields: () => ({
+    site_id: { type: GraphQLString },
+    site_name: { type: GraphQLString },
+    site_name_long: { type: GraphQLString },
   }),
 });
 
@@ -60,6 +71,17 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return axios
           .get('https://api.spacexdata.com/v3/rockets')
+          .then((res) => res.data);
+      },
+    },
+    launch_site: {
+      type: LaunchSite,
+      args: {
+        id: { type: GraphQLInt },
+      },
+      resolve(parent, args) {
+        return axios
+          .get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
           .then((res) => res.data);
       },
     },
