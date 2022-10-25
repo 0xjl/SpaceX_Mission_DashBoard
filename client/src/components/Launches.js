@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
+import Spinner from './Spinner';
+import Launchitem from './Launchitem';
+import MissionKey from './MissionKey';
+import { v4 as uuidv4 } from 'uuid';
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -16,17 +20,23 @@ const LAUNCHES_QUERY = gql`
 class Launches extends Component {
   render() {
     return (
-      <div>
+      <>
         <h1 className='display-4.my-3'>Launches:</h1>
+        <MissionKey />
         <Query query={LAUNCHES_QUERY}>
           {({ data, loading, error }) => {
-            if (loading) return <h4>Loading...</h4>;
+            if (loading) return <Spinner />;
             if (error) console.log(error);
-
-            return <h1>test</h1>;
+            return (
+              <>
+                {data.launches.map((launch) => (
+                  <Launchitem key={uuidv4()} {...launch} />
+                ))}
+              </>
+            );
           }}
         </Query>
-      </div>
+      </>
     );
   }
 }
