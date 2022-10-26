@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import logo from './img/logo.svg';
+import Navbar from './components/Navbar';
+
 import Launches from './components/Launches';
 import Launch from './components/Launch';
 
@@ -17,7 +18,7 @@ class App extends Component {
       <ApolloProvider client={client}>
         <BrowserRouter>
           <div className='container'>
-            <img src={logo} alt='logo' />
+            <Navbar />
             <Routes>
               <Route path='/' element={<Launches />} exact />
               <Route path='/launch/:flight_number' element={<Launch />} exact />
