@@ -6,6 +6,22 @@
 .nav {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.nav h2 {
+  padding-top: 1.5rem;
+}
+
+.mission-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mission-header > * {
+  object-fit: fill;
+  margin: 1em;
 }
 
 .mission-patch {
@@ -16,13 +32,27 @@
   display: flex;
 }
 
+.card-header {
+  text-align: center;
+}
+
 .card-details {
   flex: 1;
-  margin: 1em;
+  margin: 5px 5px 0 0;
 }
 
 .rocket-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+}
+
+.rocket-grid > * {
+  object-fit: fill;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .rocket-card {
@@ -30,4 +60,28 @@
   align-items: center;
   justify-content: center;
   margin: 1em;
+}
+
+.back-btn {
+  padding: 5px 1.2em;
+  margin-top: 2em;
+}
+
+.spinner {
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 1080px) {
+  .card-section {
+    flex-direction: column;
+  }
 }

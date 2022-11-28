@@ -15,15 +15,15 @@ const LAUNCH_QUERY = gql`
       launch_success
       details
       launch_date_local
-      launch_site {
-        site_id
-        site_name
-        site_name_long
-      }
       rocket {
         rocket_id
         rocket_name
         rocket_type
+      }
+      launch_site {
+        site_id
+        site_name
+        site_name_long
       }
       links {
         mission_patch_small
@@ -56,17 +56,25 @@ export default function Launch() {
 
           return (
             <div>
-              <div className='mission-patch'>
-                {' '}
-                <img src={mission_patch_small} alt='mission patch'></img>
+              <div className='card'>
+                <div className='mission-header'>
+                  <h1 className='display-4 my-3'>
+                    <span className='text-dark'>Mission:</span> {mission_name}
+                  </h1>{' '}
+                  <div className='mission-patch'>
+                    {' '}
+                    <img
+                      className='image-fluid'
+                      src={mission_patch_small}
+                      alt='mission patch'
+                    ></img>
+                  </div>
+                </div>
               </div>
-              <h1 className='display-4 my-3'>
-                <span className='text-dark'>Mission:</span> {mission_name}
-              </h1>{' '}
               <div className='card-section'>
                 <div className='card card-details'>
                   <div className='card-header'>
-                    <h4 className='mb-3'>Launch Details</h4>
+                    <h4 className='my-3'>Launch Details</h4>
                   </div>
                   <ul className='list-group'>
                     <li className='list-group-item' variant='flush'>
@@ -93,6 +101,7 @@ export default function Launch() {
                     </li>
                   </div>
                 </div>
+
                 <div className='card card-details'>
                   <div className='card-header'>
                     {' '}
@@ -116,7 +125,7 @@ export default function Launch() {
                       Rocket Type: {rocket_type}
                     </li>
                   </ul>
-                  <div className='card-footer'>Featured</div>
+                  <div className='card-footer'></div>
                 </div>
               </div>
               <section className='img-section'>
@@ -127,7 +136,7 @@ export default function Launch() {
                         <img
                           className='img-fluid'
                           src={image}
-                          alt='trial'
+                          alt='Here are images of rockets'
                           key={uuidv4()}
                         />
                       </div>
@@ -135,9 +144,12 @@ export default function Launch() {
                   })}
                 </div>{' '}
               </section>
-              <Link to='/' className='btn btn-secondary'>
-                Back
-              </Link>
+              <footer>
+                {' '}
+                <Link to='/' className='btn btn-secondary back-btn'>
+                  BACK
+                </Link>
+              </footer>
             </div>
           );
         }}

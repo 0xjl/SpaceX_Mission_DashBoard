@@ -5,7 +5,7 @@ function navBar() {
   return (
     <div className='nav'>
       <img src={logo} alt='logo' />
-      <h2>Mission Log Dashboard</h2>
+      <h2>Mission Log</h2>
     </div>
   );
 }

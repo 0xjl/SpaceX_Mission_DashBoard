@@ -3,12 +3,8 @@ import Loader from '../img/loader.gif';
 
 function Spinner() {
   return (
-    <div>
-      <img
-        height='100px'
-        src={Loader}
-        alt='Spinning dots representing a loading screen'
-      ></img>
+    <div className='spinner'>
+      <img src={Loader} alt='Spinning dots representing a loading screen'></img>
     </div>
   );
 }
