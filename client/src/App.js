@@ -3,12 +3,11 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-
 import Launches from './components/Launches';
 import Launch from './components/Launch';
 
 const client = new ApolloClient({
-  uri: 'https://imaginative-florentine-69392a.netlify.app',
+  uri: '/graphql',
   cache: new InMemoryCache(),
 });
 
