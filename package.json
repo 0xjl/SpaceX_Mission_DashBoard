@@ -29,5 +29,6 @@
   "bugs": {
     "url": "https://github.com/0xjl/SpaceX_Mission_DashBoard/issues"
   },
-  "homepage": "https://github.com/0xjl/SpaceX_Mission_DashBoard#readme"
+  "homepage": "https://github.com/0xjl/SpaceX_Mission_DashBoard#readme",
+  "proxy": "https://imaginative-florentine-69392a.netlify.app"
 }

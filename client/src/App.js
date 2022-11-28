@@ -8,7 +8,7 @@ import Launches from './components/Launches';
 import Launch from './components/Launch';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:5000/graphql',
+  uri: 'https://imaginative-florentine-69392a.netlify.app',
   cache: new InMemoryCache(),
 });
 
