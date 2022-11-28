@@ -7,7 +7,7 @@ import Launches from './components/Launches';
 import Launch from './components/Launch';
 
 const client = new ApolloClient({
-  uri: '/graphql',
+  uri: 'https://joyful-kangaroo-02396e.netlify.app/graphql',
   cache: new InMemoryCache(),
 });
 
