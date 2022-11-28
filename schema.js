@@ -7,10 +7,8 @@ const {
   GraphQLBoolean,
   GraphQLList,
   GraphQLSchema,
-  GraphQLScalarType,
 } = require('graphql');
 
-// Launch Type
 const LaunchType = new GraphQLObjectType({
   name: 'Launch',
   fields: () => ({
@@ -26,16 +24,19 @@ const LaunchType = new GraphQLObjectType({
   }),
 });
 
-const UrlType = new GraphQLObjectType({
-  name: 'Url',
+const RocketType = new GraphQLObjectType({
+  name: 'rocket',
   fields: () => ({
-    mission_patch_small: { type: GraphQLString },
+    rocket_id: { type: GraphQLString },
+    rocket_name: { type: GraphQLString },
+    rocket_type: { type: GraphQLString },
     flickr_images: { type: new GraphQLList(GraphQLString) },
+    description: { type: GraphQLString },
   }),
 });
 
 const LaunchSite = new GraphQLObjectType({
-  name: 'Site',
+  name: 'launch_site',
   fields: () => ({
     site_id: { type: GraphQLString },
     site_name: { type: GraphQLString },
@@ -43,13 +44,11 @@ const LaunchSite = new GraphQLObjectType({
   }),
 });
 
-// Rocket Type
-const RocketType = new GraphQLObjectType({
-  name: 'Rocket',
+const UrlType = new GraphQLObjectType({
+  name: 'links',
   fields: () => ({
-    rocket_id: { type: GraphQLString },
-    rocket_name: { type: GraphQLString },
-    rocket_type: { type: GraphQLString },
+    mission_patch_small: { type: GraphQLString },
+    flickr_images: { type: new GraphQLList(GraphQLString) },
   }),
 });
 
@@ -84,17 +83,6 @@ const RootQuery = new GraphQLObjectType({
           .then((res) => res.data);
       },
     },
-    launch_site: {
-      type: LaunchSite,
-      args: {
-        id: { type: GraphQLInt },
-      },
-      resolve(parent, args) {
-        return axios
-          .get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
-          .then((res) => res.data);
-      },
-    },
     rocket: {
       type: RocketType,
       args: {
@@ -102,18 +90,7 @@ const RootQuery = new GraphQLObjectType({
       },
       resolve(parent, args) {
         return axios
-          .get(`https://api.spacexdata.com/v3/rockets/${args.id}`)
-          .then((res) => res.data);
-      },
-    },
-    links: {
-      type: UrlType,
-      args: {
-        flight_number: { type: GraphQLInt },
-      },
-      resolve(parent, args) {
-        return axios
-          .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
+          .get(`https://api.spacexdata.com/v3/launches/${args.id}`)
           .then((res) => res.data);
       },
     },
